@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  code-server:
+    image: codercom/code-server
+    container_name: code-server
+    hostname: code-server
+    restart: unless-stopped
+    environment:
+      - PASSWORD=aurick
+    volumes:
+      - ~/projects:/home/coder/projects
+#      - $PWD:/home/coder/projects
+    ports:
+      - 8080:8080
+    user: 1000:1000
+    networks:
+      - code-server
+
+networks:
+  code-server:
